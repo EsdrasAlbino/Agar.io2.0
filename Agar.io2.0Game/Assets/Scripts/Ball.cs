@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour
 {
     public GameObject spawnBall;
     public float ballSpeed;
-    PlayerController person = new PlayerController();
+
     void Start()
     {
         
@@ -18,8 +18,18 @@ public class Ball : MonoBehaviour
         Spawn();
     }
 
-    void Spawn(){
-    if(Input.GetKey(KeyCode.Space))
-    Instantiate(spawnBall, person.player.transform.position*ballSpeed, Quaternion.identity);
+    void Spawn()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(spawnBall, GetComponent<PlayerController>().transform.position, Quaternion.identity);
+            StartCoroutine(SpeedSpawn());
+        }
+    }
+
+    IEnumerator SpeedSpawn()
+    {
+        yield return new WaitForSeconds(0.2f);
+        CircleClone.GetComponent<Rigidbory2d>().AddForce(ballSpeed, ForceMode2D.Impulse);
     }
 }
