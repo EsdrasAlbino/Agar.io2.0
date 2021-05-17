@@ -6,13 +6,15 @@ public class Ball : MonoBehaviour
 {
     public GameObject spawnBall;
     public float ballSpeed;
-    Rigidbody2D move;  
+    Rigidbody2D move;
+    Vector3 _position;
+
     void Start()
     {
         move = GetComponent<Rigidbody2D>();
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         Spawn();
@@ -22,16 +24,15 @@ public class Ball : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(spawnBall, GetComponent<PlayerController>().transform.position, Quaternion.identity);
-            StartCoroutine(SpeedSpawn());
-            move.AddForce(new Vector2(ballSpeed, 0f));
+            Instantiate(spawnBall, GetComponent<PlayerController>().transform.position , Quaternion.identity);
+            StartCoroutine(SpeedSpawn());  
         }
     }
 
     IEnumerator SpeedSpawn()
     {
         yield return new WaitForSeconds(0.2f);
-        
+        move.AddForceAtPosition(new Vector2(ballSpeed, 0f), Input.mousePosition);
     }
 }
 
