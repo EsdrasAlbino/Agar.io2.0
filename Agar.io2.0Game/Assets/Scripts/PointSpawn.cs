@@ -11,15 +11,14 @@ public class PointSpawn : MonoBehaviour
     
     void Start()
     {
-        while(!condition && countPoint<500)
-    {
-        Instantiate(prefeb, new Vector2(Random.Range(-9.55f, 29f), Random.Range(-5.30f, 15f)), Quaternion.identity);
-        countPoint ++;
-    }
-    StartCoroutine(spawnTime());
+            while(!condition && countPoint<500)
+        {
+            Instantiate(prefeb, new Vector2(Random.Range(-9.55f, 29f), Random.Range(-5.30f, 15f)), Quaternion.identity);
+            countPoint ++;
+        }
+        StartCoroutine(spawnTime());
     }
 
-    // Update is called once per frame
     void Update()
     {
         GameObject[] thingyToFind = GameObject.FindGameObjectsWithTag ("PointMap");
@@ -32,10 +31,10 @@ public class PointSpawn : MonoBehaviour
 
      IEnumerator spawnTime()
   {
-    while(!condition)
-    {
-        Instantiate(prefeb, new Vector2(Random.Range(-9.55f, 29f), Random.Range(-5.30f, 15f)), Quaternion.identity);
-        yield return new WaitForSeconds(spawnWait);
-    }
+        while(!condition)
+        {
+            Instantiate(prefeb, new Vector2(Random.Range(-9.55f, 29f), Random.Range(-5.30f, 15f)), Quaternion.identity);
+            yield return new WaitForSeconds(spawnWait);
+        }
   }
 }

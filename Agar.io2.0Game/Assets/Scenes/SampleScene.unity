@@ -631,6 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1671112010}
   Camera: {fileID: 519420031}
+  sizeBall: 0
   speed: 5
 --- !u!50 &1671112016
 Rigidbody2D:
@@ -666,7 +667,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnBall: {fileID: 1465395264425128980, guid: 66a266c020b44054a9e531e62d600022, type: 3}
-  ballSpeed: 2
+  cameraTwo: {fileID: 519420031}
+  ballForce: 0
+  speed: 0
+  value: 0
 --- !u!114 &1671112018
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,10 +19,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovimentPlayer();
- 
     }
 
-    void MovimentPlayer()
+    public void MovimentPlayer()
     {
         Vector3 mousePos = Input.mousePosition;
         _target = Camera.ScreenToWorldPoint(Input.mousePosition);
@@ -31,6 +30,7 @@ public class PlayerController : MonoBehaviour
         PointSpawn count = new PointSpawn();
         count.countPoint--;
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.name == "CirclePoint(Clone)")
